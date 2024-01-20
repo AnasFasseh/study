@@ -1,0 +1,23 @@
+.carte {
+  border: 1px solid;
+  width: 330px;
+  height: 200px;
+}
+
+.carte .nom {
+  font-weight: bold;
+  text-align: center;
+  height: 60px;
+}
+
+.carte .fonction {
+  font-weight: bold;
+  text-align: center;
+  height: 60px;
+}
+
+.carte .tel-adrs {
+  font-size: 13px;
+  text-align: justify;
+  height: 60px;
+}

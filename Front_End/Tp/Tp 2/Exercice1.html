@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="utf-8">
+<script src="react.development.js"crossorigin></script>
+<script src="react-dom.development.min.js" crossorigin></script>
+<script src="babel.min.js"></script>
+<style>
+    th,td:not(.no_border){
+        border: 2px solid;
+    }
+</style>
+</head>
+<body>
+    <div id="app"></div>
+    </body>
+    <script type="text/babel">
+        //page1
+        let style = {listStyleType : "none" , textAlign : "center"};
+        let malist = 
+        <ol>
+            <ul style={style}>
+                <li>module semasajkdfgkza</li>
+            </ul>
+            <li>czdlmkhkckbj </li>
+            <li>sqC/JBJSQC</li>
+            <li>DJHHJJCJBJ</li>
+        </ol> ;
+
+        ReactDOM.render(malist,document.getElementById('app'));
+
+        //page2
+        let tab = 
+        <table style={style}>
+            <tr><td colspan="5" className="no_border">Emploi du temps</td></tr>
+            <tr>
+                <th>Jours</th>
+                <th>8:00 à 10:00</th>
+                <th>10:00 à 12:00</th>
+                <th>14:00 à 16:00</th>
+                <th>16:00 à 18:00</th>
+            </tr>
+            <tr>
+                <th>lundi</th>
+                <td>math</td>
+                <td>arabe</td>
+                <td>francais</td>
+                <td>SVT</td>
+            </tr>
+            <tr>
+                <th>mardi</th>
+                <td></td>
+                <td></td>
+                <td>math</td>
+                <td>francais</td>
+            </tr>
+            <tr>
+                <th>mercredi</th>
+                <td>arabe</td>
+                <td>francais</td>
+                <td></td>
+                <td>pc</td>
+            </tr>
+            <tr>
+                <th>jeudi</th>
+                <td></td>
+                <td></td>
+                <td>HG</td>
+                <td>math</td>
+            </tr>
+            <tr>
+                <th>vendredi</th>
+                <td>EI</td>
+                <td>francais</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table> ;
+        ReactDOM.render(tab,document.getElementById("app"));
+    </script>
+</html>

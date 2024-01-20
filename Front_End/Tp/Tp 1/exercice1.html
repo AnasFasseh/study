@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 1</title>
+    <style>
+        body {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            position: relative;
+            width: 500px;
+            height: 400px;
+            border: 2px solid #1bcedf;
+            border-radius: 10px;
+            padding: 40px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        input:not(input[type = "button"]) {
+            width: 90%;
+            padding: 15px;
+            border-radius: 10px;
+            color: black;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid black;
+        }
+
+        input[type = "button"] {
+            border: none;
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background-image: linear-gradient(#1bcedf,#5b247a);
+            color: white;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: .5s;
+        }
+
+        input[type = "button"]:hover {
+            color: black;
+        }
+
+        #sp {
+            position: absolute;
+            top: 85%;
+            font-size: 18px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <form>
+            <tr>
+                <td><label for="">Nom :</label></td>
+                <td><input type="text" name="nom"></td>
+            </tr>
+            <tr>
+                <td><label for="">Prenom :</label></td>
+                <td><input type="text" name="prenom"></td>
+            </tr>
+            <tr>
+                <td><label for="">Age :</label></td>
+                <td><input type="text" name="age"></td>
+            </tr>
+            <tr>
+                <td><input id="btn" type="button" value="Valider"></td>
+            </tr>
+            <span id="sp"></span>
+        </form>
+    </table>
+
+    <script>
+
+        class Client {
+            constructor(nom, prenom, age) {
+                this.nom = nom;
+                this.prenom = prenom;
+                this.age = age;
+            }
+
+            info () {
+                return `Client: ${this.nom} ${this.prenom} agé de ${this.age}`;
+            }
+        }
+
+        document.getElementById("btn").onclick= function() {
+            let inp = document.getElementsByTagName("input");
+            let sp = document.getElementById("sp");
+            let c = new Client(inp[0].value,inp[1].value,inp[2].value);
+            sp.textContent = c.info();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "_id": { "$oid": "65951a8e337e59d069b7d136" },
+  "title": "Inception",
+  "genre": "Science Fiction",
+  "releaseYear": 2010,
+  "director": "Christopher Nolan",
+  "actors": ["Leonardo DiCaprio", "Ellen Page", "Tom Hardy"],
+  "rating": 8.7
+}

@@ -1,0 +1,47 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="react.development.js" crossorigin></script>
+    <script src="react-dom.development.min.js" crossorigin></script>
+    <script src="babel.min.js" crossorigin></script>
+    <style>
+        table,td,th{
+            border: 2px solid;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script type="text/babel">
+    var elements = [
+        ["Jours", "08:00 à 10:00", "10:00 à 12:00", "14:00 à 16:00", "16:00 à 18:00"],
+        ["Lundi", "Math", "Arabe", "Français", "S.V.T"],
+        ["Mardi", "", "", "Math", "Français"],
+        ["Mercredi", "Arabe", "Français", "", "S.V.T"],
+        ["Jeudi", "", "", "H.G", "Math"],
+        ["Vendredi", "E.I", "Français", "", ""]
+    ];
+
+    
+    let MaTable = 
+    <table>
+        {
+            elements.map((elm,index)=>
+                <tr key={index}>
+                    {
+                        index == 0 ? elm.map((elems,idx)=> <th key={idx}>{elems}</th>) : elm.map((elems,idx)=> idx == 0 ? <th key={idx}>{elems}</th> : <td key={idx+1}>{elems}</td>)
+                    }
+                </tr>
+            )
+        }
+    </table>;
+
+    ReactDOM.render(MaTable,document.getElementById('app'));
+</script>
+
+</html>

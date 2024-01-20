@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family:Arial, Helvetica, sans-serif;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        form {
+            width: 45%;
+        }
+
+        #container {
+            width: 45%;
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        input[placeholder] {
+            width: 300px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border: 2px solid #00000057;
+            font-size: 20px;
+            font-weight: 600;
+            color: gray;
+        }
+
+        input[type = "button"] {
+            padding: 15px 30px;
+            margin-right: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #ccc;
+            transition: .5s;
+        }
+
+        input[type = "button"]:hover {
+            background-color: black;
+            color: white;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        tr, td, th{
+            border: 2px solid #00000057;
+            padding: 20px;
+            text-align: center;
+        }
+
+        tbody tr:nth-child(odd) {
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <form>
+        <label style="margin-right: 74px;">Code :</label>
+        <input type="number" placeholder="Code du produit"><br>
+
+        <label style="margin-right: 10px;">Designation :</label>
+        <input type="text" placeholder="Designation du produit"><br>
+
+        <label style="margin-right: 87px;">Prix :</label>
+        <input type="number" placeholder="Prix du produit"><br>
+
+        <input type="button" value="Ajouter" id="ajouter">
+        <input type="button" value="Trouver" id="trouver">
+        <input type="button" value="Filtrer" id="filtrer">
+        <input type="button" value="Extraire" id="extraire">
+    </form>
+
+    <div id="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Designation</th>
+                    <th>Prix</th>
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        class Produit {
+            constructor(code, desig, prix) {
+                this.code = code;
+                this.desig = desig;
+                this.prix = prix;
+            };
+        };
+
+        let champs = document.getElementsByTagName('input');
+        let tbody = document.getElementById('tbody');
+        let container = document.getElementById('container');
+
+        let products = [
+            
+            {code:1,desig:'Televion',prix:20000},
+
+            {code:2,desig:'Playstaion',prix:2000},
+
+            {code:3,desig:'Keyboard',prix:200}
+
+        ];
+
+        window.onload = () => {
+            for (let i = 0 ; i < products.length ; i++) {
+                let tr = document.createElement('tr');
+                let td1 = document.createElement('td');
+                let td2 = document.createElement('td');
+                let td3 = document.createElement('td');
+                td1.append(products[i].code);
+                td2.append(products[i].desig);
+                td3.append(products[i].prix);
+
+                tr.append(td1,td2,td3);
+
+                tbody.append(tr);
+            };
+        };
+
+        // ajouter un nouveau produit
+        function Ajouter () {
+            let product = new Produit(champs[0].value, champs[1].value, champs[2].value);
+            products.push(product);
+
+            let tr = document.createElement('tr');
+            let td1 = document.createElement('td');
+            let td2 = document.createElement('td');
+            let td3 = document.createElement('td');
+
+            td1.append(product.code);
+            td2.append(product.desig);
+            td3.append(product.prix);
+            tr.append(td1, td2, td3);
+            tbody.append(tr);
+        };
+        
+        document.getElementById('ajouter').addEventListener('click', Ajouter);
+        
+        // Trouver un produit existe
+        function Trouver () {
+            let new_produit = products.find(function (pers) {return pers.code == champs[0].value});
+
+            champs[1].value = new_produit.desig;
+            champs[2].value = new_produit.prix;
+
+        };
+
+        document.getElementById('trouver').addEventListener('click', Trouver);
+
+        // filtrer les produits par le prix
+        function Filtrer () {
+            let filtreProduit = products.filter(function (pers) {return pers.prix > champs[2].value});
+
+            let trs = document.querySelectorAll('#tbody > tr');
+
+            for(let i = 0; i < trs.length ; i++) {
+                trs[i].remove();
+            };
+
+            for(let j = 0 ; j < filtreProduit.length; j++) {
+
+                let newTrs = document.createElement('tr');
+                let col1 = document.createElement('td');
+                let col2 = document.createElement('td');
+                let col3 = document.createElement('td');
+
+                col1.append(filtreProduit[j].code);
+                col2.append(filtreProduit[j].desig);
+                col3.append(filtreProduit[j].prix);
+
+                newTrs.append(col1,col2,col3);
+
+                tbody.append(newTrs);
+            };
+        };
+
+        document.getElementById('filtrer').addEventListener('click', Filtrer);
+
+        // Afficher le moins cher et le plus cher
+        function Extraire () {
+            let coup = products.map((pers) => {return pers.prix > 800 ? 'Plus chére' : 'Moins chére'});
+
+            document.getElementsByTagName('table')[0].remove();
+
+            let newTable = document.createElement('table');
+
+            for(let i = 0; i < coup.length; i++) {
+
+                let tr = document.createElement('tr');
+                let col = document.createElement('td');
+
+                col.append(`${products[i].desig} est ${coup[i]}`);
+
+                tr.append(col);
+
+                newTable.append(tr);
+            };
+
+            container.append(newTable);
+
+        };
+
+        document.getElementById('extraire').addEventListener('click', Extraire);
+
+    </script>
+</body>
+</html>

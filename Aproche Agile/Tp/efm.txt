@@ -1,0 +1,22 @@
+1-
+a. Le SCRUM MASTER est le responsable du sprint.
+b.SCRUM est une methode agile qui consiste à gérer l'ensemble des taches d'un projet.
+
+2-
+a. PERT: diagramme
+b. EPIC: tache
+c. MOA/MOE: maitrise d'ouvrage: responsable de verifier une commande du client/maitrise d'eouvre: responsable d'une partie de developpement du projet.
+
+3- Le chemin critique est l'ensemble des taches successives qui prennent la plus longue duree a realiser.
+
+4- c.
+
+5- b.Scrum Master
+
+6- a.
+
+7- d.
+
+8- b.
+
+9- c.

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        modules=[ 
+            {'code' :'M101' , 'Intitulé' :'Métier et formation' , 'MasseHoraire' : {'pre':15,'dis':0}}, 
+            {'code' :'M102' , 'Intitulé' :'Algorithmique' , 'MasseHoraire' : {'pre':90,'dis':20}}, 
+            {'code' :'M103' , 'Intitulé' :'Sites Web Statiques' , 'MasseHoraire' : {'pre':75,'dis':20}}
+        ]
+          
+        
+        //Q1
+        let somme = (i)=>{
+            return i.MasseHoraire.pre + i.MasseHoraire.dis
+        }
+        console.log(somme(modules[1]))
+
+
+        //Q2
+        let masse = modules.map(m=>{return m.MasseHoraire.pre + m.MasseHoraire.dis})
+        console.log(masse)
+
+
+
+        //Q3
+        let masse_totale_comule = modules.reduce((total,m)=>
+            total+=(m.MasseHoraire.pre + m.MasseHoraire.dis)
+        ,0)
+        console.log(masse_totale_comule) //return not neede if we delete the curly brakets
+
+
+        //Q4
+        function pureAppend(fil){
+            let modules_filiere = [...modules]
+            return modules_filiere;
+
+        }
+        console.log(pureAppend('DEV'));
+        console.log(modules);
+
+
+        //Q5
+        const [a,...rest] = modules
+        console.log(a.code,rest)
+    </script>
+</body>
+</html>

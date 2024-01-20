@@ -1,0 +1,13 @@
+1- Healthcare Web Application
+
+2- Tour and Travel Web Application
+
+3- Learning Web Application
+
+4- Stock Trading Web Application
+
+5- Job Portal Web Application (searching for a job)
+
+6- Book Review Web Application
+
+7- Task Management Web Application

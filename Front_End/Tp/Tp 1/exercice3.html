@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3</title>
+</head>
+<body>
+    <script>
+        const modules = [ 
+
+            {"code" :"M101" , "Intitulé" :"Métier et formation" , "MasseHoraire" : {"pre":15,"dis":0}}, 
+
+            {"code" :"M102" , "Intitulé" :"Algorithmique" , "MasseHoraire" : {"pre":90,"dis":20}},
+
+            {"code" :"M103" , "Intitulé" :"Sites Web Statiques" , "MasseHoraire" : {"pre":75,"dis":20}}
+
+        ];
+        
+        //Question 1
+        let masseTotal = (n) => {
+            return modules[n].MasseHoraire.pre + modules[n].MasseHoraire.dis;
+        };
+
+        console.log(masseTotal(1));
+
+        //Question 2
+        let masseT = modules.map((pers) => {return pers.MasseHoraire.pre + pers.MasseHoraire.dis});
+        console.log(masseT);
+
+        //Question 3
+        let masseTotaleComule = modules.reduce((total,pers) => {
+            return total += pers.MasseHoraire.pre + pers.MasseHoraire.dis;
+        },0);
+
+        console.log(masseTotaleComule);
+
+        //Question 4
+        function pureFiliere (filiere) {
+            let modulesFiliere = [...modules];
+            for (let i=0; i<modulesFiliere.length; i++) {
+                modulesFiliere[i].filiere = filiere;
+            };
+            return modulesFiliere;
+
+        };
+        console.log(pureFiliere("DEV"));
+        console.log(modules);
+
+        //Question 5
+
+        const {code, Intitulé, MasseHoraire :{pre}, MasseHoraire :{dis}} = modules[0];
+        console.log(code, Intitulé, pre, dis);
+    </script>
+</body>
+</html>
